@@ -4,7 +4,7 @@
 body {
   font-family: 'Open Sans', Arial, sans-serif;
   font-size: 11px;
-  background-color: white;
+  background-color: #FFFFFF;
   margin-top: 0; }
 
 nav {
@@ -23,10 +23,10 @@ nav li {
   float: left; }
 
 nav a {
-  background: -webkit-linear-gradient(top, white, #f0f0f0);
-  background: -moz-linear-gradient(top, white, #f0f0f0);
-  background: -o-linear-gradient(top, white, #f0f0f0);
-  background: linear-gradient(top, white, #f0f0f0);
+  background: -webkit-linear-gradient(top, #FFFFFF, #F0F0F0);
+  background: -moz-linear-gradient(top, #FFFFFF, #F0F0F0);
+  background: -o-linear-gradient(top, #FFFFFF, #F0F0F0);
+  background: linear-gradient(top, #FFFFFF, #F0F0F0);
   text-decoration: none;
   border-left: 1px solid #222222;
   border-bottom: 1px solid #222222;
@@ -36,26 +36,26 @@ nav a {
   display: inline-block; }
 
 nav a:hover, a:visited, a:active {
-  background: #f0f0f0; }
+  background: #F0F0F0; }
 
 nav li:last-child a {
   border-right: 1px solid #222222; }
 
 a, a:visited {
   font-weight: bold;
-  color: #4884b2; }
+  color: #4884B2; }
 
 #outer-container {
   width: 100%; }
 
 #shorten-form {
-  background: -webkit-linear-gradient(top, white, #f0f0f0);
-  background: -moz-linear-gradient(top, white, #f0f0f0);
-  background: -o-linear-gradient(top, white, #f0f0f0);
-  background: linear-gradient(top, white, #f0f0f0);
-  -moz-box-shadow: 2px 2px 2px 2px #f0f0f0;
-  -webkit-box-shadow: 2px 2px 2px 2px #f0f0f0;
-  box-shadow: 2px 2px 2px 2px #f0f0f0;
+  background: -webkit-linear-gradient(top, #FFFFFF, #F0F0F0);
+  background: -moz-linear-gradient(top, #FFFFFF, #F0F0F0);
+  background: -o-linear-gradient(top, #FFFFFF, #F0F0F0);
+  background: linear-gradient(top, #FFFFFF, #F0F0F0);
+  -moz-box-shadow: 2px 2px 2px 2px #F0F0F0;
+  -webkit-box-shadow: 2px 2px 2px 2px #F0F0F0;
+  box-shadow: 2px 2px 2px 2px #F0F0F0;
   color: #222222;
   font-weight: bold;
   padding: 10px;
@@ -76,7 +76,7 @@ a, a:visited {
   margin-top: 20px; }
 
 #shorten-form button:disabled {
-  background: #f0f0f0; }
+  background: #F0F0F0; }
 
 #status {
   display: none;
@@ -99,7 +99,7 @@ a, a:visited {
   text-align: center; }
 
 .error-message {
-  color: #b23723;
+  color: #B23723;
   font-size: 1.3em;
   text-align: center;
   line-height: 1.5em; }
@@ -111,14 +111,14 @@ a, a:visited {
   line-height: 1.5em; }
 
 .error {
-  border: 1px solid #b23723;
-  background-color: #ffb4bc; }
+  border: 1px solid #B23723;
+  background-color: #FFB4BC; }
 
 .valid {
-  background-color: white; }
+  background-color: #FFFFFF; }
 
 .required {
-  background-color: #fff597; }
+  background-color: #FFF597; }
 
 /* For rendering the input element placeholders  */
 ::-webkit-input-placeholder {
@@ -163,7 +163,7 @@ clearfix:before,
   line-height: 2em;
   text-align: center;
   font-weight: bold;
-  background: #4884b2;
+  background: #4884B2;
   color: white; }
 
 .grid-cell {
@@ -181,8 +181,8 @@ clearfix:before,
   float: left;
   text-align: center;
   font-weight: bold;
-  color: white;
-  background: #43adff; }
+  color: #FFFFFF;
+  background: #43ADFF; }
 
 .grid-row {
   -webkit-transition: opacity 1s ease-in-out;
@@ -191,16 +191,16 @@ clearfix:before,
   -o-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
   height: 2em;
-  background: #f0f0f0;
+  background: #F0F0F0;
   opacity: 0; }
 
 .grid-row:nth-child(even) {
-  background: white; }
+  background: #FFFFFF; }
 
 .normal-text {
-  -moz-box-shadow: 2px 2px 2px 2px #f0f0f0;
-  -webkit-box-shadow: 2px 2px 2px 2px #f0f0f0;
-  box-shadow: 2px 2px 2px 2px #f0f0f0;
+  -moz-box-shadow: 2px 2px 2px 2px #F0F0F0;
+  -webkit-box-shadow: 2px 2px 2px 2px #F0F0F0;
+  box-shadow: 2px 2px 2px 2px #F0F0F0;
   width: 700px;
   margin: auto;
   border: 1px solid #222222;
@@ -214,7 +214,7 @@ clearfix:before,
   line-height: 2em;
   text-align: center;
   font-weight: bold;
-  background: #4884b2;
+  background: #4884B2;
   color: white;
   padding-left: 10px;
   padding-right: 10px;
@@ -235,7 +235,7 @@ clearfix:before,
   line-height: 2em;
   text-align: center;
   font-weight: bold;
-  background: #4884b2;
+  background: #4884B2;
   color: white;
   padding-left: 10px;
   padding-right: 10px;

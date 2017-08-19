@@ -1,6 +1,4 @@
-application: avian-silo-347
-module: default
-version: one
+service: default
 runtime: python27
 api_version: 1
 threadsafe: true

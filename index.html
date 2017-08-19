@@ -12,7 +12,7 @@
         console.log('client library start');
         var ROOT = '';
         if (window.location.host.indexOf('localhost') == 0) {
-          ROOT = 'http://' + window.location.host + '/_ah/api';
+          ROOT = 'http://' + window.location.hostname + ':8081/_ah/api';
         } else {
           ROOT = 'https://one-dot-api-dot-avian-silo-347.appspot.com/_ah/api';
         }

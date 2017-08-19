@@ -21,6 +21,7 @@ class DataRequest(webapp2.RequestHandler):
   def get(self):
     """ A GET request, the result of which is a JSON object containing data.
     """
+    logging.info('Request for data is [%s]' % (self.request.url))
     m = re.match(r'^https?://[^/]+/data/(.*)$', self.request.url)
     if m:
       action = m.group(1)

@@ -1,13 +1,17 @@
-application: avian-silo-347
-version: one
-module: api
+service: api-service
 runtime: python27
 api_version: 1
 threadsafe: true
 
 handlers:
-- url: /_ah/spi/.*
-  script: api.application
+- url: /_ah/api/.*
+  script: api-service.application
 
 builtins:
 - deferred: on
+
+libraries:
+- name: pycrypto
+  version: "latest"
+- name: ssl
+  version: "latest"

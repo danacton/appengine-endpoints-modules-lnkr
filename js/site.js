@@ -185,6 +185,8 @@ lnkr.submitForm = function() {
       }
     }
     lnkr.statusMessage(errorMessages.join('<br />'), true);
+    submitElement.disabled = false;
+    submitElement.innerHTML = 'Make that link!';
   } else {
     // Now we can invoke the magic
     lnkr.setInputState(targetElement, 'valid');
@@ -225,8 +227,6 @@ lnkr.submitForm = function() {
     });
   }
 
-  submitElement.disabled = false;
-  submitElement.innerHTML = 'Make that link!';
 }
 
 /**

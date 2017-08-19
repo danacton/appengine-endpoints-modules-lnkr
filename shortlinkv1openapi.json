@@ -1,0 +1,226 @@
+{
+  "basePath": "/_ah/api",
+  "consumes": [
+    "application/json"
+  ],
+  "definitions": {
+    "ApiMessagesCreateShortLinkMessageRequest": {
+      "properties": {
+        "short_link": {
+          "type": "string"
+        },
+        "target_link": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "target_link"
+      ],
+      "type": "object"
+    },
+    "ApiMessagesCreateShortLinkMessageResponse": {
+      "properties": {
+        "created_date": {
+          "format": "int64",
+          "type": "string"
+        },
+        "msg": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "short_link": {
+          "type": "string"
+        },
+        "status": {
+          "format": "int64",
+          "type": "string"
+        },
+        "target_link": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "type": "object"
+    },
+    "ApiMessagesDeleteShortLinkMessageResponse": {
+      "properties": {
+        "msg": {
+          "type": "string"
+        },
+        "short_link": {
+          "type": "string"
+        },
+        "status": {
+          "format": "int64",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "type": "object"
+    },
+    "ApiMessagesListShortLinkMessageResponse": {
+      "properties": {
+        "short_links": {
+          "description": " Message containing short link information. ",
+          "items": {
+            "$ref": "#/definitions/ApiMessagesShortLinkMessage"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ApiMessagesReadShortLinkMessageResponse": {
+      "properties": {
+        "msg": {
+          "type": "string"
+        },
+        "short_link": {
+          "type": "string"
+        },
+        "status": {
+          "format": "int64",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "type": "object"
+    },
+    "ApiMessagesShortLinkMessage": {
+      "properties": {
+        "created_date": {
+          "format": "int64",
+          "type": "string"
+        },
+        "short_link": {
+          "type": "string"
+        },
+        "target_link": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "short_link",
+        "target_link"
+      ],
+      "type": "object"
+    }
+  },
+  "host": "localhost",
+  "info": {
+    "description": "Short Link API",
+    "title": "shortlink",
+    "version": "v1"
+  },
+  "paths": {
+    "/shortlink/v1/create": {
+      "post": {
+        "operationId": "ShortLinkApi_CreateShortLink",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ApiMessagesCreateShortLinkMessageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/ApiMessagesCreateShortLinkMessageResponse"
+            }
+          }
+        }
+      }
+    },
+    "/shortlink/v1/list": {
+      "get": {
+        "operationId": "ShortLinkApi_listShortLinks",
+        "parameters": [
+          {
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/ApiMessagesListShortLinkMessageResponse"
+            }
+          }
+        }
+      }
+    },
+    "/shortlink/v1/read": {
+      "get": {
+        "operationId": "ShortLinkApi_readShortLink",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "short_link",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/ApiMessagesReadShortLinkMessageResponse"
+            }
+          }
+        }
+      }
+    },
+    "/shortlink/v1/remove": {
+      "delete": {
+        "operationId": "ShortLinkApi_deleteShortLink",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "short_link",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/ApiMessagesDeleteShortLinkMessageResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "google_id_token": {
+      "authorizationUrl": "",
+      "flow": "implicit",
+      "type": "oauth2",
+      "x-google-issuer": "accounts.google.com",
+      "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs"
+    }
+  },
+  "swagger": "2.0"
+}
