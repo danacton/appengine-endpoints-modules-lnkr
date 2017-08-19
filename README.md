@@ -1,13 +1,13 @@
-appengine-endpoints-modules-lnkr
+lnkr
 ================================
 
 ## Project
-####Metadata
-* Version: 1.0 November 2013
-* Author: [Daniel Acton](http://google.com/+DanielActon)
+### Metadata
+* Version: 1.1 August 2017
+* Author: [Daniel Acton](http://danielacton.com)
 * For any comments, queries or suggestions, feel free to contact Daniel Acton
 
-####Description
+### Description
 Lnkr is a simple web application that is based on Google App Engine and shows a variety of concepts:
 * Google App Engine
   * Google Cloud Endpoints
@@ -25,11 +25,11 @@ Lnkr is a simple web application that is based on Google App Engine and shows a 
 The application is a real-world example aimed at developers wishing to start using Google App Engine or see samples of Google App Engine concepts. There is a running instance at [lnkr.co.za](http://lnkr.co.za). To use this source code, download it, modify it (as you wish) and deploy to your own Google App Engine instance.
 
 ## Project Setup, Installation, and Configuration
-All information about Google App Engine projects, e.g. building and running applications, is available online on the Google App Engine developer site: [developers.google.com/appengine](https://developers.google.com/appengine). Here, we'll use APPENGINE_SDK_DIR to indicate the directory in which your App Engine SDK is installed (i.e. the path to the App Engine SDK utilities).
+All information about Google App Engine projects, e.g. building and running applications, is available online on the Google App Engine developer site: [developers.google.com/appengine](https://cloud.google.com/appengine/docs/). Here, we'll use APPENGINE_SDK_DIR to indicate the directory in which your App Engine SDK is installed (i.e. the path to the App Engine SDK utilities).
 
 ### Getting started
 #### Preparing your environment
-* Install the Google App Engine SDK for Python, downloadable from [developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python](https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python)
+* Install the Google Cloud and Google App Engine SDK for Python. Details [here](https://cloud.google.com/appengine/docs/standard/python/download)
 * *(OPTIONAL)* Since the source code for the project is available on Github, you might find it easier to use this source code using Git. To install Git, follow the instructions at [git-scm.org](http://git-scm.org).
 * *(OPTIONAL)* If you want to learn SASS (this project uses SASS), install it using the instructions at [sass-lang.com](http://sass-lang.com).
 * *(OPTIONAL)* This application uses a custom minified version of the Google Closure Library. If you want to learn and use Google Closure library, download and install the Google Closure Library from [code.google.com/p/closure-library/](https://code.google.com/p/closure-library/) and the Google Closure Compiler from [code.google.com/p/closure-compiler/](https://code.google.com/p/closure-compiler/)
@@ -38,53 +38,48 @@ All information about Google App Engine projects, e.g. building and running appl
 * If you're using Git
   * Get the source code from the Github repository into a directory of your choice, using this command:
 
->        git clone https://github.com/GoogleCloudPlatform/appengine-endpoints-modules-lnkr.git
+>        $ git clone https://github.com/danacton/lnkr.git
 
-* If you're not using Git, download the source as a zip file from [github.com/GoogleCloudPlatform/appengine-endpoints-modules-lnkr/archive/master.zip](https://github.com/GoogleCloudPlatform/appengine-endpoints-modules-lnkr/archive/master.zip).
+* If you're not using Git, download the source as a zip file from [github.com/danacton/lnkr/archive/master.zip](https://github.com/danacton/lnkr/archive/master.zip).
 
 ## Deploying
-####Running locally
-* Generate the Google Cloud Endpoint Client Library using the instructions at [developers.google.com/appengine/docs/python/endpoints/gen_clients](https://developers.google.com/appengine/docs/python/endpoints/gen_clients) (all on one line, the \ are used to break a single command across multiple lines):
+### Building
+There is a shell script, build.sh, which creates the endpoints libraries and compiles the javascript library. 
+>     $ ./build.sh
 
->     APPENGINE_SDK_DIR/endpointscfg.py \
->       get_client_lib java -o . -f rest api.ShortLinkApi
+### Running locally
+if you're testing this locally, the development appserver hosts each service at a different port on localhost, so if you need to debug the endpoints, use the port for the api (it's noted in the dev_appserver log). This also means that you may need to update index.html around line 17 to point to the appropriate port. For me, it was 8081 (which is what the index.html file) has in the repo. You can find which port the services are deployed to by looking at the logging dev_appserver provides. An example is below.
 
-* Run the development server using this command (all on one line, the \ are used to break a single command across multiple lines):
+```
+$ APPENGINE_SDK_DIR/dev_appserver.py dispatch.yaml api_module.yaml data_module.yaml redirect_module.yaml static_module.yaml 
+INFO     2017-08-19 14:39:06,944 devappserver2.py:116] Skipping SDK update check.
+INFO     2017-08-19 14:39:07,003 api_server.py:313] Starting API server at: http://localhost:58237
+INFO     2017-08-19 14:39:07,005 dispatcher.py:214] Starting dispatcher running at: http://localhost:8080
+WARNING  2017-08-19 14:39:07,005 dispatcher.py:287] Your python27 micro version is below 2.7.12, our current production version.
+INFO     2017-08-19 14:39:07,010 dispatcher.py:226] Starting module "api-service" running at: http://localhost:8081
+WARNING  2017-08-19 14:39:07,010 dispatcher.py:287] Your python27 micro version is below 2.7.12, our current production version.
+INFO     2017-08-19 14:39:07,015 dispatcher.py:226] Starting module "data" running at: http://localhost:8082
+WARNING  2017-08-19 14:39:07,015 dispatcher.py:287] Your python27 micro version is below 2.7.12, our current production version.
+INFO     2017-08-19 14:39:07,021 dispatcher.py:226] Starting module "default" running at: http://localhost:8083
+WARNING  2017-08-19 14:39:07,021 dispatcher.py:287] Your python27 micro version is below 2.7.12, our current production version.
+INFO     2017-08-19 14:39:07,030 dispatcher.py:226] Starting module "static" running at: http://localhost:8084
+INFO     2017-08-19 14:39:07,034 admin_server.py:116] Starting admin server at: http://localhost:8000
+```
 
->     APPENGINE_SDK_DIR/dev_appserver.py dispatch.yaml \
->       data_module.yaml static_module.yaml api_module.yaml \
->       redirect_module.yaml
-
-####Deploying to Google App Engine
-* Only required the first time you use App Engine with your Google account
-  * Visit the Google App Engine console at [appengine.google.com](https://appengine.google.com)
-  * Sign in using your Google Account
-  * Create your own Google App Engine application in the Google App Engine console, and note the application ID that you chose
-* Generate the Google Cloud Endpoints Client Library as described above
-* Modify the index.html file around line 17, change
+### Deploying to Google App Engine
+Modify the index.html file around line 17, change
 
 >     ROOT = 'https://one-dot-api-dot-avian-silo-347.appspot.com/_ah/api';
 
-* to
+to
 
 >     ROOT = 'https://one-dot-api-dot-yourappid.appspot.com/_ah/api';
 
-* replacing **yourappid** with the application ID you chose when setting up the application in the Google App Engine console
-* In all of the `yaml` files, replace the the value of the `application` parameter with your application ID, so change
+replacing **yourappid** with the application ID you chose when setting up the application in the Google App Engine console
 
->     application: avian-silo-347
+Deploy to Google App Engine using the following commands:
 
-* to
-
->     application: yourappid
-
-* where **yourappid** is the application ID you chose
-* Deploy to Google App Engine using the following commands:
-
->     APPENGINE_SDK_DIR/appcfg.py update static_module.yaml api_module.yaml \
->       redirect_module.yaml data_module.yaml
->     APPENGINE_SDK_DIR/appcfg.py update_dispatch .
-
+>     $ gcloud app deploy --version=one --project=yourappid dispatch.yaml api_module.yaml data_module.yaml redirect_module.yaml static_module.yaml
 
 ### Optional tasks
 #### SASS
@@ -92,8 +87,8 @@ This project makes use of SASS which is a great way of making CSS easier to use.
 * The main SASS file is `style/main.scss`
 * If you want to make changes to the style, modify `style/main.scss` and use the following command to get the CSS to use (from your project working directory):
 
->     cd style
->     sass main.scss > main.css
+>     $ cd style
+>     $ sass main.scss > main.css
 
 * Please note that this command will overwrite the `main.css` file that is used by the project
 
@@ -108,7 +103,7 @@ If you'd like to explore this, you can make changes to either `js/site.js` or `j
   * Assume that CLOSURE_COMP_DIR is the directory in which you installed the Google Closure Library
   * Assume that WORKING_DIR is the directory in which you downloaded the source code for this application
 
->     CLOSURE_LIB_DIR/closure/bin/build/closurebuilder.py \
+>     $ CLOSURE_LIB_DIR/closure/bin/build/closurebuilder.py \
 >        --root=CLOSURE_LIB_DIR \
 >        --root=WOKRING_DIR/js/ \
 >        --namespace=lnkr
@@ -124,4 +119,5 @@ If you'd like to explore this, you can make changes to either `js/site.js` or `j
 ## Licensing
 
 * See LICENSE
+
 
