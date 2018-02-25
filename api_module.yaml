@@ -3,6 +3,9 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
+env_variables:
+  PYTHONHTTPSVERIFY: 1
+
 handlers:
 - url: /_ah/api/.*
   script: api-service.application

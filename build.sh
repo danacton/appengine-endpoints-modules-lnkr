@@ -12,7 +12,7 @@ echo "########## Step 2: Compile sass to css ##########"
 sass style/main.scss > style/main.css
 
 echo "########## Step 3: Compile javascript library ##########"
-# Find where the Closure library is installed from the closurebuilder.py binary
+# Find where the Closure library is installed from the closurebuilder.py binary assuming it's on the path
 fullpath=`which closurebuilder.py`
 fulldir=`dirname ${fullpath}`
 closuredir="${fulldir}/../../.."
